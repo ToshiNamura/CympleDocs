@@ -1,0 +1,107 @@
+# Optional static-site build for the Cymple wiki.
+# The Markdown files work on their own (GitHub, VS Code, Obsidian);
+# this config only adds search and a language switcher.
+#
+#   pip install mkdocs-material mkdocs-static-i18n
+#   mkdocs serve
+#
+site_name: Cymple Docs
+site_description: Bilingual documentation for Cymple eye tracking, face tracking and the Cymple Console
+site_author: Cymple documentation team
+docs_dir: .
+site_dir: site
+use_directory_urls: true
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - toc.follow
+  palette:
+    - scheme: slate
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - scheme: default
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+plugins:
+  - search
+  - i18n:
+      default_language: en
+      docs_structure: folder
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+        - locale: ru
+          name: Русский
+          build: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - Home: index.md
+  - Getting started:
+      - Overview: getting-started/overview.md
+      - Requirements: getting-started/requirements.md
+      - Installation: getting-started/installation.md
+      - Quick start: getting-started/quick-start.md
+  - Hardware:
+      - Overview: hardware/index.md
+      - Eye tracker: hardware/eye-tracker.md
+      - Dual-camera mouth: hardware/dual-camera-mouth.md
+      - Single-camera mouth: hardware/single-camera-mouth.md
+      - Network setup: hardware/network.md
+      - Firmware: hardware/firmware.md
+      - Third-party bridges: hardware/bridges.md
+  - Console:
+      - Console overview: software/index.md
+      - Home: software/home.md
+      - Eye: software/eye.md
+      - Dual-Camera Mouth: software/dual-camera-mouth.md
+      - Single-Camera Mouth: software/single-camera-mouth.md
+      - Expression Amplitude: software/expression-amplitude.md
+      - VRCFT: software/vrcft.md
+      - Face Settings: software/face-settings.md
+      - Firmware Flash: software/firmware-flash.md
+      - OSC Router: software/osc-router.md
+      - Logs: software/logs.md
+      - Global Settings: software/global-settings.md
+      - Feedback: software/feedback.md
+  - Guides:
+      - Calibration: guides/calibration.md
+      - Dataset recording: guides/dataset-recording.md
+      - VRChat setup: guides/vrchat-setup.md
+      - External VRCFT: guides/external-vrcft.md
+  - Reference:
+      - Ports and endpoints: reference/ports.md
+      - Configuration file: reference/config.md
+      - Troubleshooting: reference/troubleshooting.md
+      - FAQ: reference/faq.md
+      - Glossary: reference/glossary.md

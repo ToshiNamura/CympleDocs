@@ -1,0 +1,6 @@
+# Normalize line endings: LF everywhere, including on Windows checkouts.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.webp binary
